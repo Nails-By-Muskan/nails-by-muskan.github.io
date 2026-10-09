@@ -57,11 +57,82 @@ section.content{padding:65px 6%;scroll-margin-top:80px}
 .price-summary strong{display:block;font-size:2rem;color:var(--pink)}
 .price-summary p,.small-note{font-size:.9rem;color:var(--muted)}
 .submit-btn{width:100%;margin-top:22px}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.gallery-item{min-height:180px;display:grid;place-content:center;text-align:center;border-radius:18px;background:linear-gradient(145deg,#f6d3e1,#fff3f7);color:#805267;font-size:1.2rem;padding:15px}
-.gallery-item span{font-size:2rem;color:var(--pink)}
-.center{text-align:center}
-.center p{max-width:680px;margin:10px auto 22px}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+  border-radius: 20px;
+  background: #f8e5ed;
+  box-shadow: 0 8px 24px #422c3712;
+  transition: transform 0.25s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.gallery-caption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 35px 16px 16px;
+  color: white;
+  background: linear-gradient(transparent, #24121edb);
+}
+
+.gallery-caption h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.gallery-caption p {
+  margin: 3px 0 0;
+  font-size: 0.9rem;
+}
+
+.center {
+  text-align: center;
+  margin: 10px auto 22px;
+}
+
+.center > p:not(.eyebrow) {
+  max-width: 680px;
+  margin: 10px auto 22px;
+}
+
+@media (max-width: 650px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .gallery-item,
+  .gallery-item img {
+    min-height: 230px;
+    height: 230px;
+  }
+
+  .gallery-caption {
+    padding: 28px 10px 10px;
+  }
+
+  .gallery-caption h3 {
+    font-size: 1rem;
+  }
+}
 footer{padding:28px 6%;text-align:center;background:var(--dark);color:white}
 footer p{font-size:.9rem;margin-bottom:0}
 @media(max-width:950px){.price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.navbar{flex-wrap:wrap}}
@@ -194,12 +265,48 @@ section.content{padding:50px 5%}
   </form>
 </section>
 
+
 <section class="content" id="gallery">
-  <div class="section-heading"><p class="eyebrow">Nail inspiration</p><h2>Made to Be Admired</h2><p>Replace these placeholders with Muskan's real nail photos whenever they are ready.</p></div>
+  <div class="section-heading">
+    <p class="eyebrow">Nail inspiration</p>
+    <h2>Made to Be Admired</h2>
+    <p>Discover beautiful nail styles, from timeless elegance to a little sparkle.</p>
+  </div>
+
   <div class="gallery-grid">
-    <div class="gallery-item"><span>♡</span>Soft & Pretty</div>
-    <div class="gallery-item"><span>✧</span>Glam & Glossy</div>
-    <div class="gallery-item"><span>✿</span>Floral Dreams</div>
+    <article class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=700&q=80"
+           alt="Beautiful manicure" loading="lazy">
+      <div class="gallery-caption">
+        <h3>Soft &amp; Pretty ♡</h3>
+        <p>Elegant everyday nails</p>
+      </div>
+    </article>
+
+    <article class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=700&q=80"
+           alt="Stylish nail art" loading="lazy">
+      <div class="gallery-caption">
+        <h3>Glam &amp; Glossy ✨</h3>
+        <p>Shine on every occasion</p>
+      </div>
+    </article>
+
+    <article class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=700&q=80"
+           alt="Nail design inspiration" loading="lazy">
+      <div class="gallery-caption">
+        <h3>Floral Dreams 🌸</h3>
+        <p>Pretty details, lovely designs</p>
+      </div>
+    </article>
+  </div>
+
+  <div style="text-align:center; margin-top:28px;">
+    <a class="btn" href="https://www.instagram.com/nails_by_muskaan_nl/"
+       target="_blank" rel="noopener noreferrer">
+      See More on Instagram ↗
+    </a>
   </div>
 </section>
 
