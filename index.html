@@ -1,477 +1,748 @@
- 
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nails by Muskan</title>
-<style>
-:root{--pink:#d66d94;--pale:#fff3f7;--dark:#422c37;--muted:#796873}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:85px}
-body{margin:0;font-family:Arial,sans-serif;color:var(--dark);background:#fffafb;line-height:1.6}
-[hidden]{display:none!important}
-a{color:inherit;text-decoration:none}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-h1,h2,h3,p{overflow-wrap:break-word}
-h1{font-size:clamp(2.3rem,6vw,4.2rem);line-height:1.12}
-h2{font-size:clamp(1.8rem,4vw,2.6rem)}
-.eyebrow{font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:var(--pink);font-weight:bold}
-.btn{display:inline-block;border:0;border-radius:28px;padding:12px 20px;background:var(--pink);color:white;font-weight:bold}
-.btn:hover{filter:brightness(.94)}
-.welcome{min-height:100vh;display:grid;place-items:center;padding:24px;text-align:center;background:linear-gradient(135deg,#fff4f8,#f4d9e5)}
-.welcome-card{width:min(100%,650px);padding:40px 25px;background:#ffffffdf;border-radius:28px;box-shadow:0 15px 45px #422c3715}
-.welcome-card .heart{font-size:3rem;color:var(--pink)}
-.welcome-card h1 span,.hero h1 span{color:var(--pink)}
-.navbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 5%;background:white;box-shadow:0 2px 14px #422c370d}
-.logo{font-weight:bold;font-size:1.2rem;white-space:nowrap}
-.logo span{color:var(--pink)}
-nav{display:flex;gap:17px;flex-wrap:wrap}
-nav a:hover{color:var(--pink)}
-.menu-toggle{display:none;border:0;background:transparent;font-size:1.5rem;color:var(--dark)}
-section.content{padding:65px 6%;scroll-margin-top:80px}
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center;background:var(--pale);padding:75px 6%}
-.hero p{max-width:550px}
-.hero-art{min-height:270px;border-radius:48% 48% 42% 42%;display:grid;place-items:center;text-align:center;background:linear-gradient(145deg,#f2c2d5,#fff0f5)}
-.hero-art strong{font-size:1.8rem;line-height:1.3}
-.hero-art .heart{font-size:3rem;color:var(--pink)}
-.section-heading{text-align:center;margin:0 auto 30px;max-width:720px}
-.section-heading>p:not(.eyebrow){color:var(--muted)}
-.price-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
-.price-card{display:flex;flex-direction:column;align-items:flex-start;padding:22px;border:1px solid #f0dce5;border-radius:18px;background:white;box-shadow:0 7px 22px #422c3708}
-.price-card .symbol{font-size:1.6rem;color:var(--pink)}
-.price-card h3{margin:10px 0 5px;line-height:1.3}
-.price-card p{color:var(--muted);font-size:.94rem;flex:1}
-.price-card strong{font-size:1.2rem;margin:8px 0 15px}
-.price-card .btn{width:100%;text-align:center;padding:10px 8px}
-.booking-area{background:var(--pale)}
-.booking-form{max-width:720px;margin:auto;padding:28px;border-radius:20px;background:white;box-shadow:0 8px 28px #422c370b}
-.booking-form>label{display:block;font-weight:bold;margin:18px 0 7px}
-.booking-form input:not([type=checkbox]),.booking-form select,.booking-form textarea{width:100%;padding:12px;border:1px solid #e6d3dc;border-radius:10px;background:white;color:var(--dark)}
-.booking-form input:focus,.booking-form select:focus,.booking-form textarea:focus{outline:2px solid #e8afc6}
-.service-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.service-option{display:flex;align-items:flex-start;gap:9px;padding:12px;border:1px solid #f0dce5;border-radius:10px;background:#fffafd;cursor:pointer}
-.service-option input{accent-color:var(--pink);margin-top:5px;flex-shrink:0}
-.price-summary{margin-top:18px;padding:17px;border-radius:12px;background:#fff0f5}
-.price-summary strong{display:block;font-size:2rem;color:var(--pink)}
-.price-summary p,.small-note{font-size:.9rem;color:var(--muted)}
-.submit-btn{width:100%;margin-top:22px}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff3f7">
+  <title>Nails by Muskan</title>
+  <style>
+    :root {
+      --pink: #c45b83;
+      --pale: #fff3f7;
+      --dark: #35232d;
+      --muted: #806b76;
+      --rose-gold: #b9828f;
+      --cream: #fffaf8;
+      --border: #f0dce5;
+      --shadow: 0 12px 35px rgba(75, 35, 53, 0.08);
+    }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
+    * { box-sizing: border-box; }
 
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  min-height: 320px;
-  border-radius: 20px;
-  background: #f8e5ed;
-  box-shadow: 0 8px 24px #422c3712;
-  transition: transform 0.25s ease;
-}
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
 
-.gallery-item:hover {
-  transform: translateY(-5px);
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--dark);
+      background: #fffafb;
+      line-height: 1.6;
+    }
 
-.gallery-item img {
-  display: block;
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-}
+    [hidden] { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    h1, h2, h3, p { overflow-wrap: break-word; }
 
-.gallery-caption {
-  position: absolute;
-  inset: auto 0 0;
-  padding: 35px 16px 16px;
-  color: white;
-  background: linear-gradient(transparent, #24121edb);
-}
+    h1 {
+      font-size: clamp(2.3rem, 6vw, 4.2rem);
+      line-height: 1.12;
+    }
 
-.gallery-caption h3 {
-  margin: 0;
-  font-size: 1.15rem;
-}
+    h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
 
-.gallery-caption p {
-  margin: 3px 0 0;
-  font-size: 0.9rem;
-}
+    .eyebrow {
+      font-size: .78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--pink);
+      font-weight: bold;
+    }
 
-.center {
-  text-align: center;
-  margin: 10px auto 22px;
-}
+    .btn {
+      display: inline-block;
+      border: 0;
+      border-radius: 28px;
+      padding: 12px 20px;
+      background: var(--pink);
+      color: white;
+      font-weight: bold;
+      transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease;
+    }
 
-.center > p:not(.eyebrow) {
-  max-width: 680px;
-  margin: 10px auto 22px;
-}
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(196, 91, 131, .22);
+      filter: brightness(.94);
+    }
 
-@media (max-width: 650px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
+    .welcome {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      text-align: center;
+      background: linear-gradient(135deg, #fff4f8, #f4d9e5);
+    }
 
-  .gallery-item,
-  .gallery-item img {
-    min-height: 230px;
-    height: 230px;
-  }
+    .welcome-card {
+      width: min(100%, 650px);
+      padding: 40px 25px;
+      background: #ffffffdf;
+      border-radius: 28px;
+      box-shadow: 0 15px 45px #422c3715;
+      animation: welcomeIn .8s ease both;
+    }
 
-  .gallery-caption {
-    padding: 28px 10px 10px;
-  }
+    .welcome-card .heart {
+      font-size: 3rem;
+      color: var(--pink);
+    }
 
-  .gallery-caption h3 {
-    font-size: 1rem;
-  }
-}
-footer{padding:28px 6%;text-align:center;background:var(--dark);color:white}
-footer p{font-size:.9rem;margin-bottom:0}
-@media(max-width:950px){.price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.navbar{flex-wrap:wrap}}
-@media(max-width:650px){
-.navbar{padding:13px 5%}
-.menu-toggle{display:block}
-nav{display:none;order:4;width:100%;flex-direction:column;gap:10px}
-nav.open{display:flex}
-.nav-book{display:none}
-.hero{grid-template-columns:1fr;padding:50px 5%}
-section.content{padding:50px 5%}
-.price-grid,.service-options,.gallery-grid{grid-template-columns:1fr}
-.booking-form{padding:20px}
-.hero-art{min-height:210px}
-}
-</style>
+    .welcome-card h1 span,
+    .hero h1 span { color: var(--pink); }
+
+    @keyframes welcomeIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 15px 5%;
+      background: white;
+      box-shadow: 0 2px 14px #422c370d;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+      white-space: nowrap;
+    }
+
+    .logo span { color: var(--pink); }
+
+    nav {
+      display: flex;
+      gap: 17px;
+      flex-wrap: wrap;
+    }
+
+    nav a { transition: color .2s ease; }
+    nav a:hover { color: var(--pink); }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 1.5rem;
+      color: var(--dark);
+    }
+
+    section.content {
+      padding: 65px 6%;
+      scroll-margin-top: 80px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 35px;
+      align-items: center;
+      background: linear-gradient(135deg, #fff3f7 0%, #f9e3ec 55%, #fffaf8 100%);
+      padding: 70px 6%;
+    }
+
+    .hero p { max-width: 550px; }
+
+    .hero-art {
+      min-height: 0;
+      display: block;
+      padding: 10px;
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+      transition: transform .35s ease;
+    }
+
+    .hero-art:hover { transform: translateY(-4px); }
+
+    .photo-frame {
+      position: relative;
+      width: 100%;
+      max-width: 200px;
+      margin: auto;
+      padding: 7px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 110px 110px 20px 20px;
+      box-shadow: 0 15px 35px rgba(75, 35, 53, .13);
+      overflow: hidden;
+    }
+
+    .muskan-photo {
+      display: block;
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 103px 103px 13px 13px;
+      background: #f8e5ed;
+    }
+
+    .photo-caption {
+      padding: 10px 4px 7px;
+      text-align: center;
+    }
+
+    .photo-caption span {
+      color: var(--pink);
+      font-size: .62rem;
+      letter-spacing: 1px;
+    }
+
+    .photo-caption h2 {
+      margin: 5px 0;
+      color: var(--dark);
+      font-family: Georgia, serif;
+      font-size: 1.4rem;
+    }
+
+    .photo-caption p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin: 0 auto 30px;
+      max-width: 720px;
+    }
+
+    .section-heading > p:not(.eyebrow) { color: var(--muted); }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .price-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 7px 22px #422c3708;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+
+    .price-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: #e7b6ca;
+    }
+
+    .price-card .symbol { font-size: 1.6rem; color: var(--pink); }
+    .price-card h3 { margin: 10px 0 5px; line-height: 1.3; }
+    .price-card p { color: var(--muted); font-size: .94rem; flex: 1; }
+    .price-card strong { font-size: 1.2rem; margin: 8px 0 15px; }
+    .price-card .btn { width: 100%; text-align: center; padding: 10px 8px; }
+
+    .booking-area { background: var(--pale); }
+
+    .booking-form {
+      max-width: 720px;
+      margin: auto;
+      padding: 28px;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 8px 28px #422c370b;
+    }
+
+    .booking-form > label {
+      display: block;
+      font-weight: bold;
+      margin: 18px 0 7px;
+    }
+
+    .booking-form input:not([type="checkbox"]),
+    .booking-form select,
+    .booking-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #e6d3dc;
+      border-radius: 10px;
+      background: white;
+      color: var(--dark);
+    }
+
+    .booking-form input:focus,
+    .booking-form select:focus,
+    .booking-form textarea:focus {
+      outline: 2px solid #e8afc6;
+    }
+
+    .service-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .service-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fffafd;
+      cursor: pointer;
+    }
+
+    .service-option input {
+      accent-color: var(--pink);
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .price-summary {
+      margin-top: 18px;
+      padding: 17px;
+      border-radius: 12px;
+      background: #fff0f5;
+    }
+
+    .price-summary strong {
+      display: block;
+      font-size: 2rem;
+      color: var(--pink);
+    }
+
+    .price-summary p,
+    .small-note {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .submit-btn { width: 100%; margin-top: 22px; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+      border-radius: 20px;
+      background: #f8e5ed;
+      box-shadow: 0 8px 24px #422c3712;
+      transition: transform .25s ease;
+    }
+
+    .gallery-item:hover { transform: translateY(-5px); }
+
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 35px 16px 16px;
+      color: white;
+      background: linear-gradient(transparent, #24121edb);
+    }
+
+    .gallery-caption h3 { margin: 0; font-size: 1.15rem; }
+    .gallery-caption p { margin: 3px 0 0; font-size: .9rem; }
+
+    .center {
+      text-align: center;
+      margin: 10px auto 22px;
+    }
+
+    .center > p:not(.eyebrow) {
+      max-width: 680px;
+      margin: 10px auto 22px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 28px 6%;
+      text-align: center;
+      background: var(--dark);
+      color: white;
+    }
+
+    footer p { font-size: .9rem; margin-bottom: 0; }
+
+    @media (max-width: 950px) {
+      .price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .navbar { flex-wrap: wrap; }
+    }
+
+    @media (max-width: 650px) {
+      .navbar { padding: 13px 5%; }
+      .menu-toggle { display: block; }
+      nav {
+        display: none;
+        order: 4;
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+      }
+      nav.open { display: flex; }
+      .nav-book { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 50px 5%; }
+      section.content { padding: 50px 5%; }
+      .price-grid, .service-options, .gallery-grid { grid-template-columns: 1fr; }
+      .booking-form { padding: 20px; }
+      .hero-art { min-height: 0; }
+      .photo-frame { max-width: 180px; }
+      .muskan-photo { height: 220px; }
+      .gallery-item, .gallery-item img { min-height: 230px; height: 230px; }
+      .gallery-caption { padding: 28px 10px 10px; }
+      .gallery-caption h3 { font-size: 1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<!-- WELCOME -->
-<section class="welcome" id="welcome">
-  <div class="welcome-card">
-    <p class="eyebrow">A little beauty, a lot of love</p>
-    <div class="heart">♡</div>
-    <h1>Welcome to<br><span>Nails by Muskan</span></h1>
-    <p>Your nails deserve a little luxury.</p>
-    <button class="btn" id="nextButton" type="button">Discover Our Services ↗</button>
-    <p class="small-note">Made with love ♡</p>
-  </div>
-</section>
-
-<!-- MAIN WEBSITE -->
-<div id="mainSite" hidden>
-<header class="navbar">
-  <a class="logo" href="#home">Nails by Muskan<span>.</span></a>
-  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
-  <nav id="navMenu">
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#booking">Book Now</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <a class="btn nav-book" href="#booking">Book Appointment</a>
-</header>
-
-<main>
-<section class="hero" id="home">
-  <div>
-    <p class="eyebrow">Your nails, your style</p>
-    <h1>Little details.<br>Beautiful <span>nails.</span></h1>
-    <p>Elegant nail designs, gorgeous extensions and a little sparkle to make every day feel special.</p>
-    <a class="btn" href="#services">Explore Services ↗</a>
-  </div>
-  <div class="hero-art">
-    <div><div class="heart">♡</div><strong>NAILS<br>BY MUSKAN</strong><p>Pretty nails, happy heart.</p></div>
-  </div>
-</section>
-
-<section class="content" id="services">
-  <div class="section-heading">
-    <p class="eyebrow">A little self-care</p>
-    <h2>Our Services & Prices</h2>
-    <p>Choose a service below to add it to your booking request.</p>
-  </div>
-  <div class="price-grid">
-    <article class="price-card"><span class="symbol">✧</span><h3>Acrylic Extensions</h3><p>Beautiful length and shape for your dream nails.</p><strong>€45</strong><button class="btn choose-service" type="button" data-service="Acrylic extensions">Choose Service</button></article>
-    <article class="price-card"><span class="symbol">♡</span><h3>Gel Extension</h3><p>Elegant extensions with a glossy finish.</p><strong>€40</strong><button class="btn choose-service" type="button" data-service="Gel extension">Choose Service</button></article>
-    <article class="price-card"><span class="symbol">✿</span><h3>BIAB Overlay</h3><p>A beautiful overlay for a polished nail look.</p><strong>€35</strong><button class="btn choose-service" type="button" data-service="BIAB overlay">Choose Service</button></article>
-    <article class="price-card"><span class="symbol">❀</span><h3>Gel Polish</h3><p>Glossy colour for a neat finish.</p><strong>€25</strong><button class="btn choose-service" type="button" data-service="Gel polish">Choose Service</button></article>
-    <article class="price-card"><span class="symbol">♡</span><h3>French Manicure</h3><p>A timeless and elegant French style.</p><strong>€30</strong><button class="btn choose-service" type="button" data-service="French manicure">Choose Service</button></article>
-    <article class="price-card"><span class="symbol">✧</span><h3>Pedicure with French</h3><p>A fresh pedicure with a French finish.</p><strong>€35</strong><button class="btn choose-service" type="button" data-service="Pedicure with French">Choose Service</button></article>
-    <article class="price-card"><span class="symbol">♡</span><h3>Nail Extension Removal</h3><p>An additional charge when removal is needed.</p><strong>+€10</strong><button class="btn choose-service" type="button" data-service="Nail extension removal">Choose Service</button></article>
-    <article class="price-card"><span class="symbol">✿</span><h3>Custom Press-On Nails</h3><p>Personalised nails designed for your style.</p><strong>Price on consultation</strong><button class="btn choose-service" type="button" data-service="Custom press-on nails">Choose Service</button></article>
-  </div>
-</section>
-
-<section class="content booking-area" id="booking">
-  <div class="section-heading">
-    <p class="eyebrow">Your nail appointment</p>
-    <h2>Request a Booking</h2>
-    <p>Select your services and preferred appointment time. Muskan will confirm availability.</p>
-  </div>
-  <form class="booking-form" id="bookingForm">
-    <label for="customerName">Your name</label>
-    <input id="customerName" type="text" placeholder="Enter your name" required>
-
-    <label for="customerPhone">Your phone number</label>
-    <input id="customerPhone" type="tel" placeholder="Include your country code" required>
-
-    <label>Choose one or more services</label>
-    <div class="service-options" id="serviceOptions">
-      <label class="service-option"><input type="checkbox" value="Acrylic extensions" data-price="45">Acrylic Extensions — €45</label>
-      <label class="service-option"><input type="checkbox" value="Gel extension" data-price="40">Gel Extension — €40</label>
-      <label class="service-option"><input type="checkbox" value="BIAB overlay" data-price="35">BIAB Overlay — €35</label>
-      <label class="service-option"><input type="checkbox" value="Gel polish" data-price="25">Gel Polish — €25</label>
-      <label class="service-option"><input type="checkbox" value="French manicure" data-price="30">French Manicure — €30</label>
-      <label class="service-option"><input type="checkbox" value="Pedicure with French" data-price="35">Pedicure with French — €35</label>
-      <label class="service-option"><input type="checkbox" value="Nail extension removal" data-price="10" data-extra="true">Nail Extension Removal — additional €10</label>
-      <label class="service-option"><input type="checkbox" value="Custom press-on nails" data-price="0" data-consultation="true">Custom Press-On Nails — consultation</label>
+  <!-- WELCOME -->
+  <section class="welcome" id="welcome">
+    <div class="welcome-card">
+      <p class="eyebrow">A little beauty, a lot of love</p>
+      <div class="heart">♡</div>
+      <h1>Welcome to<br><span>Nails by Muskan</span></h1>
+      <p>Your nails deserve a little luxury.</p>
+      <button class="btn" id="nextButton" type="button">Discover Our Services ↗</button>
+      <p class="small-note">Made with love ♡</p>
     </div>
+  </section>
 
-    <div class="price-summary" aria-live="polite">
-      <span>Estimated total</span>
-      <strong id="estimatedTotal">€0</strong>
-      <p id="priceNote">Select one or more services.</p>
-    </div>
+  <!-- MAIN WEBSITE -->
+  <div id="mainSite" hidden>
+    <header class="navbar">
+      <a class="logo" href="#home">Nails by Muskan<span>.</span></a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+      <nav id="navMenu">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#booking">Book Now</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn nav-book" href="#booking">Book Appointment</a>
+    </header>
 
-    <label for="appointmentDate">Preferred date</label>
-    <input id="appointmentDate" type="date" required>
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <p class="eyebrow">YOUR NAILS, YOUR STYLE</p>
+          <h1>Little details.<br>Beautiful <span>nails.</span></h1>
+          <p class="hero-description">
+            Elegant nail designs, gorgeous extensions and a little
+            sparkle to make every day feel special.
+          </p>
+          <a class="btn" href="#services">Explore Services ↗</a>
+          <p class="hero-note">♡ Created with love by Muskan</p>
+        </div>
 
-    <label for="appointmentTime">Preferred time</label>
-    <select id="appointmentTime" required>
-      <option value="">Choose a time</option>
-      <option value="10:00">10:00</option>
-      <option value="11:00">11:00</option>
-      <option value="12:00">12:00</option>
-      <option value="13:00">13:00</option>
-      <option value="14:00">14:00</option>
-      <option value="15:00">15:00</option>
-      <option value="16:00">16:00</option>
-    </select>
+        <div class="hero-art">
+          <div class="photo-frame">
+            <img
+              src="muskan.jpg"
+              alt="Muskan, nail artist at Nails by Muskan"
+              class="muskan-photo"
+            >
+            <div class="photo-caption">
+              <span>MEET YOUR NAIL ARTIST</span>
+              <h2>Muskan ♡</h2>
+              <p>Pretty nails, happy heart.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <label for="designNotes">Design or other details (optional)</label>
-    <textarea id="designNotes" rows="4" placeholder="Describe your preferred design or any questions..."></textarea>
+      <section class="content" id="services">
+        <div class="section-heading">
+          <p class="eyebrow">A little self-care</p>
+          <h2>Our Services &amp; Prices</h2>
+          <p>Choose a service below to add it to your booking request.</p>
+        </div>
+        <div class="price-grid">
+          <article class="price-card"><span class="symbol">✧</span><h3>Acrylic Extensions</h3><p>Beautiful length and shape for your dream nails.</p><strong>€45</strong><button class="btn choose-service" type="button" data-service="Acrylic extensions">Choose Service</button></article>
+          <article class="price-card"><span class="symbol">♡</span><h3>Gel Extension</h3><p>Elegant extensions with a glossy finish.</p><strong>€40</strong><button class="btn choose-service" type="button" data-service="Gel extension">Choose Service</button></article>
+          <article class="price-card"><span class="symbol">✿</span><h3>BIAB Overlay</h3><p>A beautiful overlay for a polished nail look.</p><strong>€35</strong><button class="btn choose-service" type="button" data-service="BIAB overlay">Choose Service</button></article>
+          <article class="price-card"><span class="symbol">❀</span><h3>Gel Polish</h3><p>Glossy colour for a neat finish.</p><strong>€25</strong><button class="btn choose-service" type="button" data-service="Gel polish">Choose Service</button></article>
+          <article class="price-card"><span class="symbol">♡</span><h3>French Manicure</h3><p>A timeless and elegant French style.</p><strong>€30</strong><button class="btn choose-service" type="button" data-service="French manicure">Choose Service</button></article>
+          <article class="price-card"><span class="symbol">✧</span><h3>Pedicure with French</h3><p>A fresh pedicure with a French finish.</p><strong>€35</strong><button class="btn choose-service" type="button" data-service="Pedicure with French">Choose Service</button></article>
+          <article class="price-card"><span class="symbol">♡</span><h3>Nail Extension Removal</h3><p>An additional charge when removal is needed.</p><strong>+€10</strong><button class="btn choose-service" type="button" data-service="Nail extension removal">Choose Service</button></article>
+          <article class="price-card"><span class="symbol">✿</span><h3>Custom Press-On Nails</h3><p>Personalised nails designed for your style.</p><strong>Price on consultation</strong><button class="btn choose-service" type="button" data-service="Custom press-on nails">Choose Service</button></article>
+        </div>
+      </section>
 
-    <button class="btn submit-btn" type="submit">Send Booking Request on WhatsApp ↗</button>
-    <p class="small-note">Your appointment is not confirmed until Muskan replies. WhatsApp will open with your message ready to send.</p>
-  </form>
-</section>
+      <section class="content booking-area" id="booking">
+        <div class="section-heading">
+          <p class="eyebrow">Your nail appointment</p>
+          <h2>Request a Booking</h2>
+          <p>Select your services and preferred appointment time. Muskan will confirm availability.</p>
+        </div>
+        <form class="booking-form" id="bookingForm">
+          <label for="customerName">Your name</label>
+          <input id="customerName" name="customerName" type="text" placeholder="Enter your name" autocomplete="name" required>
 
+          <label for="customerPhone">Your phone number</label>
+          <input id="customerPhone" name="customerPhone" type="tel" placeholder="Include your country code" autocomplete="tel" required>
 
-<section class="content" id="gallery">
-  <div class="section-heading">
-    <p class="eyebrow">Nail inspiration</p>
-    <h2>Made to Be Admired</h2>
-    <p>Discover beautiful nail styles, from timeless elegance to a little sparkle.</p>
+          <label>Choose one or more services</label>
+          <div class="service-options" id="serviceOptions">
+            <label class="service-option"><input type="checkbox" value="Acrylic extensions" data-price="45">Acrylic Extensions — €45</label>
+            <label class="service-option"><input type="checkbox" value="Gel extension" data-price="40">Gel Extension — €40</label>
+            <label class="service-option"><input type="checkbox" value="BIAB overlay" data-price="35">BIAB Overlay — €35</label>
+            <label class="service-option"><input type="checkbox" value="Gel polish" data-price="25">Gel Polish — €25</label>
+            <label class="service-option"><input type="checkbox" value="French manicure" data-price="30">French Manicure — €30</label>
+            <label class="service-option"><input type="checkbox" value="Pedicure with French" data-price="35">Pedicure with French — €35</label>
+            <label class="service-option"><input type="checkbox" value="Nail extension removal" data-price="10" data-extra="true">Nail Extension Removal — additional €10</label>
+            <label class="service-option"><input type="checkbox" value="Custom press-on nails" data-price="0" data-consultation="true">Custom Press-On Nails — consultation</label>
+          </div>
+
+          <div class="price-summary" aria-live="polite">
+            <span>Estimated total</span>
+            <strong id="estimatedTotal">€0</strong>
+            <p id="priceNote">Select one or more services.</p>
+          </div>
+
+          <label for="appointmentDate">Preferred date</label>
+          <input id="appointmentDate" name="appointmentDate" type="date" required>
+
+          <label for="appointmentTime">Preferred time</label>
+          <select id="appointmentTime" name="appointmentTime" required>
+            <option value="">Choose a time</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+          </select>
+
+          <label for="designNotes">Design or other details (optional)</label>
+          <textarea id="designNotes" name="designNotes" rows="4" placeholder="Describe your preferred design or any questions..."></textarea>
+
+          <button class="btn submit-btn" type="submit">Send Booking Request on WhatsApp ↗</button>
+          <p class="small-note">Your appointment is not confirmed until Muskan replies. WhatsApp will open with your message ready to send.</p>
+        </form>
+      </section>
+
+      <section class="content" id="gallery">
+        <div class="section-heading">
+          <p class="eyebrow">Nail inspiration</p>
+          <h2>Made to Be Admired</h2>
+          <p>Discover beautiful nail styles, from timeless elegance to a little sparkle.</p>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Beautiful manicure" loading="lazy">
+            <div class="gallery-caption"><h3>Soft &amp; Pretty ♡</h3><p>Elegant everyday nails</p></div>
+          </article>
+          <article class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Stylish nail art" loading="lazy">
+            <div class="gallery-caption"><h3>Glam &amp; Glossy ✨</h3><p>Shine on every occasion</p></div>
+          </article>
+          <article class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&amp;fit=crop&amp;w=700&amp;q=80" alt="Nail design inspiration" loading="lazy">
+            <div class="gallery-caption"><h3>Floral Dreams 🌸</h3><p>Pretty details, lovely designs</p></div>
+          </article>
+        </div>
+        <div class="center" style="margin-top:28px;">
+          <a class="btn" href="https://www.instagram.com/nails_by_muskaan_nl/" target="_blank" rel="noopener noreferrer">See More on Instagram ↗</a>
+        </div>
+      </section>
+
+      <section class="content center" id="about">
+        <p class="eyebrow">The story behind the nails</p>
+        <h2>Beauty in Every Detail</h2>
+        <p>Nails by Muskan is all about beautiful nail designs, personal style and making every appointment feel special. Choose your favourite look and send an appointment request.</p>
+      </section>
+
+      <section class="content center" id="contact">
+        <p class="eyebrow">Come say hello</p>
+        <h2>Contact &amp; Opening Hours</h2>
+        <p><strong>Opening hours:</strong> Monday - Friday, 10:00–17:00</p>
+        <p><strong>Location:</strong> Leleysatd, Netherlands, 8225 NP</p>
+        <p><strong>WhatsApp Business:</strong> +31 6 18262229</p>
+        <div class="contact-links">
+          <a class="btn" href="https://wa.me/31618262229" target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a>
+          <a class="btn" href="https://www.instagram.com/nails_by_muskaan_nl/" target="_blank" rel="noopener noreferrer">Follow us on Instagram 📸</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="logo" href="#home">Nails by Muskan<span>.</span></a>
+      <p>Made with ♡ for your beautiful nails.</p>
+    </footer>
   </div>
 
-  <div class="gallery-grid">
-    <article class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=700&q=80"
-           alt="Beautiful manicure" loading="lazy">
-      <div class="gallery-caption">
-        <h3>Soft &amp; Pretty ♡</h3>
-        <p>Elegant everyday nails</p>
-      </div>
-    </article>
+  <script>
+    (() => {
+      "use strict";
 
-    <article class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=700&q=80"
-           alt="Stylish nail art" loading="lazy">
-      <div class="gallery-caption">
-        <h3>Glam &amp; Glossy ✨</h3>
-        <p>Shine on every occasion</p>
-      </div>
-    </article>
-
-    <article class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=700&q=80"
-           alt="Nail design inspiration" loading="lazy">
-      <div class="gallery-caption">
-        <h3>Floral Dreams 🌸</h3>
-        <p>Pretty details, lovely designs</p>
-      </div>
-    </article>
-  </div>
-
-  <div style="text-align:center; margin-top:28px;">
-    <a class="btn" href="https://www.instagram.com/nails_by_muskaan_nl/"
-       target="_blank" rel="noopener noreferrer">
-      See More on Instagram ↗
-    </a>
-  </div>
-</section>
-
-<section class="content center" id="about">
-  <p class="eyebrow">The story behind the nails</p>
-  <h2>Beauty in Every Detail</h2>
-  <p>Nails by Muskan is all about beautiful nail designs, personal style and making every appointment feel special. Choose your favourite look and send an appointment request.</p>
-</section>
-
-<section class="content center" id="contact">
-  <p class="eyebrow">Come say hello</p>
-  <h2>Contact & Opening Hours</h2>
-  <p><strong>Opening hours:</strong> Monday - Friday, 10:00–17:00</p>
-  <p><strong>Location:</strong> Leleysatd, Netherlands, 8225 NP</p>
-  <p class="small-note"></p>
-  <p><strong>WhatsApp Business:</strong> +31 6 18262229</p>
-  <a class="btn" href="https://wa.me/31618262229" target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a>
-  
-<a class="btn"
-   href="https://www.instagram.com/nails_by_muskaan_nl/"
-   target="_blank"
-   rel="noopener noreferrer">
-  Follow us on Instagram 📸
-</a>
-</section>
-</main>
-
-<footer>
-  <a class="logo" href="#home">Nails by Muskan<span>.</span></a>
-  <p>Made with ♡ for your beautiful nails.</p>
-</footer>
-</div>
-
-<script>
-(() => {
-  "use strict";
-
-  const welcome = document.getElementById("welcome");
-  const mainSite = document.getElementById("mainSite");
-  const nextButton = document.getElementById("nextButton");
-  const menuToggle = document.getElementById("menuToggle");
-  const navMenu = document.getElementById("navMenu");
-  const form = document.getElementById("bookingForm");
-  const dateInput = document.getElementById("appointmentDate");
-  const totalOutput = document.getElementById("estimatedTotal");
-  const priceNote = document.getElementById("priceNote");
-  const serviceOptions = document.getElementById("serviceOptions");
-
-  const checkboxes = Array.from(
-    serviceOptions.querySelectorAll('input[type="checkbox"]')
-  );
-
-  // Open the main website
-  nextButton.addEventListener("click", () => {
-    welcome.hidden = true;
-    mainSite.hidden = false;
-    document.getElementById("home").scrollIntoView({ behavior: "smooth" });
-  });
-
-  // Mobile navigation
-  menuToggle.addEventListener("click", () => {
-    const open = navMenu.classList.toggle("open");
-    menuToggle.textContent = open ? "✕" : "☰";
-    menuToggle.setAttribute("aria-expanded", String(open));
-    menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-  });
-
-  navMenu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      navMenu.classList.remove("open");
-      menuToggle.textContent = "☰";
-      menuToggle.setAttribute("aria-expanded", "false");
-    });
-  });
-
-  // Price calculator
-  function updatePrice() {
-    const selected = checkboxes.filter(box => box.checked);
-    const total = selected.reduce(
-      (sum, box) => sum + Number(box.dataset.price || 0), 0
-    );
-
-    totalOutput.textContent = "€" + total;
-
-    if (selected.length === 0) {
-      priceNote.textContent = "Select one or more services.";
-      return;
-    }
-
-    const notes = ["Estimated price; Muskan will confirm your booking."];
-
-    if (selected.some(box => box.dataset.extra === "true")) {
-      notes.push("The €10 removal fee is an additional charge.");
-    }
-
-    if (selected.some(box => box.dataset.consultation === "true")) {
-      notes.push("Custom press-on nails are not included in the total.");
-    }
-
-    priceNote.textContent = notes.join(" ");
-  }
-
-  checkboxes.forEach(box => box.addEventListener("change", updatePrice));
-
-  // Service buttons tick the corresponding booking checkbox
-  document.querySelectorAll(".choose-service").forEach(button => {
-    button.addEventListener("click", () => {
-      const match = checkboxes.find(
-        box => box.value === button.dataset.service
+      const welcome = document.getElementById("welcome");
+      const mainSite = document.getElementById("mainSite");
+      const nextButton = document.getElementById("nextButton");
+      const menuToggle = document.getElementById("menuToggle");
+      const navMenu = document.getElementById("navMenu");
+      const form = document.getElementById("bookingForm");
+      const dateInput = document.getElementById("appointmentDate");
+      const totalOutput = document.getElementById("estimatedTotal");
+      const priceNote = document.getElementById("priceNote");
+      const serviceOptions = document.getElementById("serviceOptions");
+      const checkboxes = Array.from(
+        serviceOptions.querySelectorAll('input[type="checkbox"]')
       );
 
-      if (match) {
-        match.checked = true;
-        updatePrice();
+      // Open the main website
+      nextButton.addEventListener("click", () => {
+        welcome.hidden = true;
+        mainSite.hidden = false;
+        document.getElementById("home").scrollIntoView({ behavior: "smooth" });
+      });
+
+      // Mobile navigation
+      menuToggle.addEventListener("click", () => {
+        const open = navMenu.classList.toggle("open");
+        menuToggle.textContent = open ? "✕" : "☰";
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      });
+
+      navMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("open");
+          menuToggle.textContent = "☰";
+          menuToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      // Price calculator
+      function updatePrice() {
+        const selected = checkboxes.filter(box => box.checked);
+        const total = selected.reduce(
+          (sum, box) => sum + Number(box.dataset.price || 0), 0
+        );
+
+        totalOutput.textContent = "€" + total;
+
+        if (selected.length === 0) {
+          priceNote.textContent = "Select one or more services.";
+          return;
+        }
+
+        const notes = ["Estimated price; Muskan will confirm your booking."];
+
+        if (selected.some(box => box.dataset.extra === "true")) {
+          notes.push("The €10 removal fee is an additional charge.");
+        }
+
+        if (selected.some(box => box.dataset.consultation === "true")) {
+          notes.push("Custom press-on nails are not included in the total.");
+        }
+
+        priceNote.textContent = notes.join(" ");
       }
 
-      document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
-    });
-  });
+      checkboxes.forEach(box => box.addEventListener("change", updatePrice));
 
-  // Prevent selecting dates in the past
-  function setMinimumDate() {
-    const now = new Date();
-    const localDate = new Date(
-      now.getTime() - now.getTimezoneOffset() * 60000
-    ).toISOString().slice(0, 10);
-    dateInput.min = localDate;
-  }
-  setMinimumDate();
+      // Service buttons tick the corresponding booking checkbox
+      document.querySelectorAll(".choose-service").forEach(button => {
+        button.addEventListener("click", () => {
+          const match = checkboxes.find(
+            box => box.value === button.dataset.service
+          );
 
-  // Prepare WhatsApp appointment request
-  form.addEventListener("submit", event => {
-    event.preventDefault();
+          if (match) {
+            match.checked = true;
+            updatePrice();
+          }
 
-    const selected = checkboxes.filter(box => box.checked);
+          document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
+        });
+      });
 
-    if (selected.length === 0) {
-      alert("Please select at least one service.");
-      return;
-    }
-
-    const name = document.getElementById("customerName").value.trim();
-    const phone = document.getElementById("customerPhone").value.trim();
-    const date = dateInput.value;
-    const time = document.getElementById("appointmentTime").value;
-    const details = document.getElementById("designNotes").value.trim();
-
-    const serviceLines = selected.map(box => {
-      if (box.dataset.extra === "true") {
-        return "- " + box.value + " (+€10 additional charge)";
+      // Prevent selecting dates in the past
+      function setMinimumDate() {
+        const now = new Date();
+        const localDate = new Date(
+          now.getTime() - now.getTimezoneOffset() * 60000
+        ).toISOString().slice(0, 10);
+        dateInput.min = localDate;
       }
-      if (box.dataset.consultation === "true") {
-        return "- " + box.value + " (price on consultation)";
-      }
-      return "- " + box.value + " (€" + box.dataset.price + ")";
-    }).join("\n");
 
-    const total = selected.reduce(
-      (sum, box) => sum + Number(box.dataset.price || 0), 0
-    );
-    const consultationSelected = selected.some(
-      box => box.dataset.consultation === "true"
-    );
+      setMinimumDate();
 
-    const message =
+      // Prepare WhatsApp appointment request
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+
+        const selected = checkboxes.filter(box => box.checked);
+
+        if (selected.length === 0) {
+          alert("Please select at least one service.");
+          return;
+        }
+
+        const name = document.getElementById("customerName").value.trim();
+        const phone = document.getElementById("customerPhone").value.trim();
+        const date = dateInput.value;
+        const time = document.getElementById("appointmentTime").value;
+        const details = document.getElementById("designNotes").value.trim();
+
+        const serviceLines = selected.map(box => {
+          if (box.dataset.extra === "true") {
+            return "- " + box.value + " (+€10 additional charge)";
+          }
+          if (box.dataset.consultation === "true") {
+            return "- " + box.value + " (price on consultation)";
+          }
+          return "- " + box.value + " (€" + box.dataset.price + ")";
+        }).join("\n");
+
+        const total = selected.reduce(
+          (sum, box) => sum + Number(box.dataset.price || 0), 0
+        );
+
+        const consultationSelected = selected.some(
+          box => box.dataset.consultation === "true"
+        );
+
+        const message =
 `Hello Muskan! I'd like to request an appointment.
 
 Name: ${name}
@@ -488,14 +759,12 @@ Design/details: ${details || "Not specified"}
 
 Please confirm whether this date and time are available. Thank you!`;
 
-    const url = "https://wa.me/31618262229?text=" +
-      encodeURIComponent(message);
+        const url = "https://wa.me/31618262229?text=" + encodeURIComponent(message);
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
 
-    window.open(url, "_blank", "noopener,noreferrer");
-  });
-
-  updatePrice();
-})();
-</script>
+      updatePrice();
+    })();
+  </script>
 </body>
 </html>
